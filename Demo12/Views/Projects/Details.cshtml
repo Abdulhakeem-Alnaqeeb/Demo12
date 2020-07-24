@@ -1,0 +1,50 @@
+﻿@model Demo12.Models.Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Conractor.ContractorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Conractor.ContractorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ARProjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARProjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EngProjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EngProjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,116 @@
+﻿@model Demo12.Models.ServiceViewModel
+@*@model Demo12.Models.TourViewModel*@
+
+@{
+    ViewBag.Title = "index";
+}
+
+
+<h2>تقرير جولة ميدانية</h2>
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div>
+            <label class="control-label col-md-12">اسم المشروع</label>
+            <select class="form-control">
+                @foreach (var item in Model.projects)
+                {
+                    <option>@item.ARProjectName</option>
+                }
+            </select>
+        </div>
+
+        <label class="control-label col-md-12">اسم المدينة</label>
+        <div>
+            <select class="form-control">
+                @foreach (var item in Model.Cities)
+                {
+                    <option>@item.CityName</option>
+                }
+            </select>
+        </div>
+
+        <div>
+            <label class="control-label col-md-12">مشرف المقاول</label>
+            <select class="form-control">
+                @foreach (var item in Model.conractors)
+                {
+                    <option>@item.ConractorSupervisor</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label class="control-label col-md-12">التاريخ</label>
+            <div class="btn btn-default">@Model.Date</div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">الخدمات</th>
+
+                    <th class="text-center">هل تم إنجاز المطلوب</th>
+
+                    <th class="text-center">نسبة الانجاز</th>
+
+                    <th class="text-center">العماله</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.Services)
+                {
+                    <tr>
+                        <td>@item.ServiceName</td>
+
+                        <td>
+                            <select class="form-control">
+                                @foreach (var i in Model.IsAchieved)
+                                {
+                                    <option>@i.Result</option>
+                                }
+                            </select>
+                        </td>
+
+                        <td>
+                            <select class="form-control">
+                                @foreach (var i in Model.AchievedRate)
+                                {
+                                    <option>@i.Rate</option>
+                                }
+                            </select>
+                        </td>
+
+                        <td>
+                            3
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <label for="w3review">ملاحظات</label>
+
+<textarea class="form-control" rows="10">
+
+</textarea>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-4">
+                <input type="submit" value="إرسال" class="btn btn-primary" readonly />
+            </div>
+        </div>
+
+    </div>
+}
+@*@foreach(var n in Model.FieldTour)
+    {
+        n.ProjectID = (Model=> )
+    }*@
+
+@*@Html.DropDownListFor(model => model.City, ViewBag.CityList as SelectList, new { @class = "form-control" })*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
